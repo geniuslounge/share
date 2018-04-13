@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import urllib.request
-
+import os
 
 def og_twitter_html():
     video_id = input("What is the video ID? ")
@@ -64,6 +64,22 @@ def og_twitter_html():
     return html_output
 
 
+def make_files(HTML_in):
+    folder_name= input("What's the slug name?")
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    full_path=dir_path + "/" + folder_name + "/"
+    print(full_path)
+    if os.path.isdir(full_path) == True:
+        print("Already Exists")
+    else:
+        print("Making dir")
+        os.mkdir(folder_name)
+        f= open(full_path + "index.html", "w+")
+        f.write(HTML_in)
+        f.close()
+
+
 
 if __name__=='__main__':
-    print(og_twitter_html())
+    make_files(og_twitter_html())
+    # print(og_twitter_html())
