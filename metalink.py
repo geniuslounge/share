@@ -68,15 +68,18 @@ def make_files(HTML_in):
     folder_name= input("What's the slug name?")
     dir_path = os.path.dirname(os.path.realpath(__file__))
     full_path=dir_path + "/" + folder_name + "/"
-    print(full_path)
     if os.path.isdir(full_path) == True:
         print("Already Exists")
     else:
-        print("Making dir")
+        print("Making dir...")
         os.mkdir(folder_name)
+        print("Creating file...")
         f= open(full_path + "index.html", "w+")
         f.write(HTML_in)
         f.close()
+        print("Done.")
+        print("•••••••••")
+        print("File Located at: " + full_path)
 
 
 
